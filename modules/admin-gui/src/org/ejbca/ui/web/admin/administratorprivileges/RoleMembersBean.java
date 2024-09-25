@@ -206,9 +206,10 @@ public class RoleMembersBean extends BaseManagedBean implements Serializable {
             final List<String> tokenTypes = new ArrayList<>(AccessMatchValueReverseLookupRegistry.INSTANCE.getAllTokenTypes());
             Collections.sort(tokenTypes);
             for (final String tokenType : tokenTypes) {
-                if (tokenType.equals(OAuth2AuthenticationTokenMetaData.TOKEN_TYPE) && !getEjbcaWebBean().isRunningEnterprise()) {
-                    continue;
-                }
+                // Allowing CE and Enterprise editions
+                //if (tokenType.equals(OAuth2AuthenticationTokenMetaData.TOKEN_TYPE) && !getEjbcaWebBean().isRunningEnterprise()) {
+                //    continue;
+                //}
                 final AuthenticationTokenMetaData authenticationTokenMetaData = AccessMatchValueReverseLookupRegistry.INSTANCE.getMetaData(tokenType);
                 if (authenticationTokenMetaData.isUserConfigurable()) {
                     for (final AccessMatchValue accessMatchValue : authenticationTokenMetaData.getAccessMatchValues()) {

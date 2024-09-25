@@ -76,7 +76,7 @@
                         </f:facet>
                         <h:outputText value="#{roleMembersBean.getTokenIssuerIdString(roleMember)}"/>
                     </h:column>
-                    <h:column rendered="#{web.ejbcaWebBean.runningEnterprise}">
+                    <h:column rendered="true">
                         <f:facet name="header" >
                             <h:outputText value="#{web.text.OAUTHPROVIDER}"/>
                             <h:panelGroup id="oAuthProviderBlock" layout="block" rendered="#{roleMembersBean.authorizedToEditRole}">
