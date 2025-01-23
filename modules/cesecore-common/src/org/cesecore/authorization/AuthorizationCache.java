@@ -133,7 +133,7 @@ public enum AuthorizationCache {
                             try {
                                 get(entry.authenticationToken, authorizationCacheCallback);
                             } catch (AuthenticationFailedException e) {
-                                log.debug("Unexpected failure during refresh if authroization cache: " + e.getMessage());
+                                log.debug("Unexpected failure during refresh if authorization cache: " + e.getMessage());
                             }
                         }
                     }
