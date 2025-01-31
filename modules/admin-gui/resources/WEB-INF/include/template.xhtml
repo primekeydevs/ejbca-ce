@@ -69,14 +69,13 @@
     </ui:insert>
     
      <p:menubar id="mainNavigation" autoDisplay="false">
-    	<p:menuitem url="#{adminMenuBean.adminWebUrl}" value="#{web.text.NAV_HOME}" icon="pi pi-fw pi-home"/>  
-    
+    	<p:menuitem id="mainHome" url="#{adminMenuBean.adminWebUrl}" value="#{web.text.NAV_HOME}" icon="pi pi-fw pi-home"/>  
         <p:submenu id="mainCaFunctions" label="#{web.text.NAV_CAFUNCTIONS}" icon="pi pi-fw pi-server" rendered="#{adminMenuBean.authorizedToViewCAHeader}">
            	<p:menuitem id="caCaactivation" value="#{web.text.NAV_CAACTIVATION}" rendered="#{adminMenuBean.authorizedToViewCAActivation}" url="#{adminMenuBean.adminWebUrl}ca/caactivation.xhtml"/>			
             <p:menuitem id="caCafunctions" value="#{web.text.NAV_CASTRUCTUREANDCRL}" rendered="#{adminMenuBean.authorizedToViewCA}" url="#{adminMenuBean.adminWebUrl}ca/cafunctions.xhtml"/>
             <p:menuitem id="caEditcertificateprofiles" value="#{web.text.NAV_CERTIFICATEPROFILES}" rendered="#{adminMenuBean.authorizedToViewCertificateProfile}" url="#{adminMenuBean.adminWebUrl}ca/editcertificateprofiles/editcertificateprofiles.xhtml"/>
-            <p:menuitem id="caEditcas" value="#{web.text.NAV_CAS}" url="#{adminMenuBean.adminWebUrl}ca/editcas/managecas.xhtml"  rendered="#{adminMenuBean.authorizedToViewCA}"/>
         	<p:menuitem id="caCryptotokens" value="#{web.text.NAV_CRYPTOTOKENS}" url="#{adminMenuBean.adminWebUrl}cryptotoken/cryptotokens.xhtml" rendered="#{adminMenuBean.authorizedToViewCryptotoken}"/>
+            <p:menuitem id="caEditcas" value="#{web.text.NAV_CAS}" url="#{adminMenuBean.adminWebUrl}ca/editcas/managecas.xhtml"  rendered="#{adminMenuBean.authorizedToViewCA}"/>
             <p:menuitem id="caEditpublishers" value="#{web.text.NAV_PUBLISHERS}" url="#{adminMenuBean.adminWebUrl}ca/editpublishers/listpublishers.xhtml" rendered="#{adminMenuBean.authorizedToViewPublishers}"/>
         	<p:menuitem id="caEditvalidators" value="#{web.text.NAV_VALIDATORS}" url="#{adminMenuBean.adminWebUrl}ca/editvalidators/editvalidators.xhtml" rendered="#{adminMenuBean.authorizedToViewValidators}"/>
         </p:submenu>
@@ -86,35 +85,33 @@
        		<p:menuitem id="raListendentities" url="#{adminMenuBean.adminWebUrl}ra/searchendentities.xhtml" rendered="#{adminMenuBean.authorizedToViewEndEntity}" value="#{web.text.NAV_SEARCHENDENTITIES}"/>
        		<p:menuitem id="raEdituserdatasources" url="#{adminMenuBean.adminWebUrl}ra/edituserdatasources/userdatasourcespage.xhtml" rendered="#{adminMenuBean.authorizedToEditUserDataSources}" value="#{web.text.NAV_USERDATASOURCES}"/>         
         </p:submenu>
-        <p:submenu id="mainVaFunctions" label="#{web.text.NAV_VAFUNCTIONS}" icon="pi pi-fw pi-book" rendered="#{adminMenuBean.authorizedToViewVAHeader}">
-           	<p:menuitem id="vaOcspResonders" url="#{adminMenuBean.adminWebUrl}keybind/ocspresponders.xhtml" rendered="#{adminMenuBean.authorizedViewInternalKeyBindings}" value="#{web.text.NAV_OCSPRESPONDERS}"/>   	
+        <p:submenu id="mainVaFunctions" label="#{web.text.NAV_VAFUNCTIONS}" icon="pi pi-fw pi-check-circle" rendered="#{adminMenuBean.authorizedToViewVAHeader}">
+           	<p:menuitem id="vaOcspResponders" url="#{adminMenuBean.adminWebUrl}keybind/ocspresponders.xhtml" rendered="#{adminMenuBean.authorizedViewInternalKeyBindings}" value="#{web.text.NAV_OCSPRESPONDERS}"/>   	
         </p:submenu>
-        <p:submenu id="mainSupervisionFunctions" label="#{web.text.NAV_SUPERVISIONFUNCTIONS}" icon="pi pi-fw pi-user-plus" rendered="#{adminMenuBean.authorizedToViewSupervisionFunctionsHeader}">
-			<p:menuitem id="supervisionEditapprovalprofiles" url="#{adminMenuBean.adminWebUrl}approval/editapprovalprofiles.xhtml" rendered="#{adminMenuBean.authorizedToViewApprovalProfiles}" value="#{web.text.NAV_APPROVALPROFILES}"/>
-        	<p:menuitem id="supervisionApproveactionlist" url="#{adminMenuBean.adminWebUrl}approval/approvalactions.xhtml" rendered="#{adminMenuBean.authorizedToApproveActions}" value="#{web.text.NAV_APPROVEACTIONS}"/>
-			<p:menuitem id="supervisionAuditsearch" url="#{adminMenuBean.adminWebUrl}audit/search.xhtml" rendered="#{adminMenuBean.authorizedToViewLog}" value="#{web.text.NAV_AUDIT}"/>
+        <p:submenu id="mainControls" label="#{web.text.NAV_CONTROLS}" icon="pi pi-fw pi-id-card" rendered="#{adminMenuBean.authorizedToViewControlsHeader}">
+			<p:menuitem id="ctrlRoles" url="#{adminMenuBean.adminWebUrl}administratorprivileges/roles.xhtml" rendered="#{adminMenuBean.authorizedToViewRoles}" value="#{web.text.NAV_ROLES}"/>
+			<p:menuitem id="ctrlEditapprovalprofiles" url="#{adminMenuBean.adminWebUrl}approval/editapprovalprofiles.xhtml" rendered="#{adminMenuBean.authorizedToViewApprovalProfiles}" value="#{web.text.NAV_APPROVALPROFILES}"/>
+        	<p:menuitem id="ctrlApproveactions" url="#{adminMenuBean.adminWebUrl}approval/approvalactions.xhtml" rendered="#{adminMenuBean.authorizedToApproveActions}" value="#{web.text.NAV_APPROVEACTIONS}"/>
+			<p:menuitem id="ctrlAuditsearch" url="#{adminMenuBean.adminWebUrl}audit/search.xhtml" rendered="#{adminMenuBean.authorizedToViewLog}" value="#{web.text.NAV_AUDIT}"/>
 		</p:submenu>
-		
-		<p:submenu id="mainSystemFunctions" label="#{web.text.NAV_SYSTEMFUNCTIONS}" icon="pi pi-fw pi-box" rendered="#{adminMenuBean.authorizedToViewSystemFunctionsHeader}">
-			<p:menuitem id="sysFuncsRoles" url="#{adminMenuBean.adminWebUrl}administratorprivileges/roles.xhtml" rendered="#{adminMenuBean.authorizedToViewRoles}" value="#{web.text.NAV_ROLES}"/>
-       		<p:menuitem id="sysFuncsKeyBindings" url="#{adminMenuBean.adminWebUrl}keybind/keybindings.xhtml" rendered="#{adminMenuBean.authorizedViewInternalKeyBindings}" value="#{web.text.NAV_KEYBINDINGS}"/>
-       		<p:menuitem id="sysFuncsPeerSystems" url="#{adminMenuBean.adminWebUrl}peerconnector/peerconnectors.xhtml" rendered="#{adminMenuBean.authorizedToViewPeerConnectors}" value="#{web.text.NAV_PEERCONNECTOR}"/>
-       		<p:menuitem id="sysFuncsServices" url="#{adminMenuBean.adminWebUrl}services/listservices.xhtml" rendered="#{adminMenuBean.authorizedToViewServices}" value="#{web.text.NAV_SERVICES}"/>
+		<p:submenu id="mainProtocols" label="#{web.text.NAV_PROTOCOLS}" icon="pi pi-fw pi-arrow-right-arrow-left" rendered="#{adminMenuBean.authorizedToViewProtocolsHeader}">
+           	<p:menuitem id="protocolAcme" url="#{adminMenuBean.adminWebUrl}sysconfig/acmeconfiguration.xhtml" rendered="#{adminMenuBean.authorizedToViewAcmeConfiguration}" value="#{web.text.NAV_ACMECONFIGURATION}"/>
+	   		<p:menuitem id="protocolAutoenroll" url="#{adminMenuBean.adminWebUrl}sysconfig/autoenrollconfiguration.xhtml" rendered="#{adminMenuBean.authorizedToViewAutoenrollConfiguration}" value="#{web.text.NAV_AUTOENROLLCONFIGURATION}"/> 
+	   		<p:menuitem id="protocolCmp" url="#{adminMenuBean.adminWebUrl}sysconfig/cmpaliases.xhtml" rendered="#{adminMenuBean.authorizedToViewCmpConfiguration}" value="#{web.text.NAV_CMPCONFIGURATION}"/>
+	   		<p:menuitem id="protocolEst" url="#{adminMenuBean.adminWebUrl}sysconfig/estconfigurations.xhtml" rendered="#{adminMenuBean.authorizedToViewEstConfiguration}" value="#{web.text.NAV_ESTCONFIGURATION}"/>
+	   		<p:menuitem id="protocolScep" url="#{adminMenuBean.adminWebUrl}sysconfig/scepconfiguration.xhtml" rendered="#{adminMenuBean.authorizedToViewScepConfiguration}" value="#{web.text.NAV_SCEPCONFIGURATION}"/>
 		</p:submenu>
-        <p:submenu id="mainSystemConfiguration" label="#{web.text.NAV_SYSTEMCONFIGURATION}" icon="pi pi-fw pi-cog" rendered="#{adminMenuBean.authorizedToViewSystemConfigurationHeader}">
-           	<p:menuitem id="sysConfigAcme" url="#{adminMenuBean.adminWebUrl}sysconfig/acmeconfiguration.xhtml" rendered="#{adminMenuBean.authorizedToViewAcmeConfiguration}" value="#{web.text.NAV_ACMECONFIGURATION}"/>
-	   		<p:menuitem id="sysConfigAutoenroll" url="#{adminMenuBean.adminWebUrl}sysconfig/autoenrollconfiguration.xhtml" rendered="#{adminMenuBean.authorizedToViewAutoenrollConfiguration}" value="#{web.text.NAV_AUTOENROLLCONFIGURATION}"/> 
-	   		<p:menuitem id="sysConfigCmp" url="#{adminMenuBean.adminWebUrl}sysconfig/cmpaliases.xhtml" rendered="#{adminMenuBean.authorizedToViewCmpConfiguration}" value="#{web.text.NAV_CMPCONFIGURATION}"/>
-	   		<p:menuitem id="sysConfigEst" url="#{adminMenuBean.adminWebUrl}sysconfig/estconfigurations.xhtml" rendered="#{adminMenuBean.authorizedToViewEstConfiguration}" value="#{web.text.NAV_ESTCONFIGURATION}"/>
-	   		<p:menuitem id="sysConfigScep" url="#{adminMenuBean.adminWebUrl}sysconfig/scepconfiguration.xhtml" rendered="#{adminMenuBean.authorizedToViewScepConfiguration}" value="#{web.text.NAV_SCEPCONFIGURATION}"/>
-	   		<p:menuitem id="sysConfigGlobal" url="#{adminMenuBean.adminWebUrl}sysconfig/systemconfiguration.xhtml" rendered="#{adminMenuBean.authorizedToConfigureSystem}" value="#{web.text.NAV_SYSTEMCONFIGURATION}"/>
-	   		<p:menuitem id="sysConfigUpgrade" url="#{adminMenuBean.adminWebUrl}upgrade.xhtml" rendered="#{adminMenuBean.authorizedToConfigureSystem and adminMenuBean.upgradeRequired}" value="#{web.text.NAV_SYSTEMUPGRADE}"/>
-		    <p:menuitem url="#{adminMenuBean.adminWebUrl}mypreferences.xhtml" value="#{web.text.NAV_MYPREFERENCES}"/> 	
+        <p:submenu id="mainConfiguration" label="#{web.text.NAV_CONFIGURATION}" icon="pi pi-fw pi-cog" rendered="#{adminMenuBean.authorizedToViewConfigurationHeader}">
+       		<p:menuitem id="confKeyBindings" url="#{adminMenuBean.adminWebUrl}keybind/keybindings.xhtml" rendered="#{adminMenuBean.authorizedViewInternalKeyBindings}" value="#{web.text.NAV_KEYBINDINGS}"/>
+       		<p:menuitem id="confPeerSystems" url="#{adminMenuBean.adminWebUrl}peerconnector/peerconnectors.xhtml" rendered="#{adminMenuBean.authorizedToViewPeerConnectors}" value="#{web.text.NAV_PEERCONNECTOR}"/>
+       		<p:menuitem id="confServices" url="#{adminMenuBean.adminWebUrl}services/listservices.xhtml" rendered="#{adminMenuBean.authorizedToViewServices}" value="#{web.text.NAV_SERVICES}"/>
+	   		<p:menuitem id="confGlobal" url="#{adminMenuBean.adminWebUrl}sysconfig/systemconfiguration.xhtml" rendered="#{adminMenuBean.authorizedToConfigureSystem}" value="#{web.text.NAV_SYSTEMCONFIGURATION}"/>
+	   		<p:menuitem id="confUpgrade" url="#{adminMenuBean.adminWebUrl}upgrade.xhtml" rendered="#{adminMenuBean.authorizedToConfigureSystem and adminMenuBean.upgradeRequired}" value="#{web.text.NAV_SYSTEMUPGRADE}"/>
+		    <p:menuitem id="confMypreferences" url="#{adminMenuBean.adminWebUrl}mypreferences.xhtml" value="#{web.text.NAV_MYPREFERENCES}"/> 	
       	</p:submenu>
-		<p:menuitem id="mainRaWeb" url="#{ejbcawebbean.getBaseUrl()}ra/" target="_ejbcaraweb" rel="noopener noreferer" rendered="#{adminMenuBean.authorizedToViewRaWeb}" value="#{web.text.RAWEB}"/>
-        <p:menuitem id="mainDocumentation" url="#{ejbcawebbean.getHelpBaseURI() }/index.html" target="_ejbcaDocWindow" rel="noopener noreferer" rendered="#{adminMenuBean.helpEnabled}" value="#{web.text.DOCUMENTATION}"/>
-        <p:menuitem id="mainLogout" url="#{ejbcawebbean.getBaseUrl()}adminweb/logout" target="_top" rendered="#{adminMenuBean.logoutAvailable}" value="#{web.text.LOGOUT}"/>
-              
+		<p:menuitem id="mainRaWeb" url="#{ejbcawebbean.getBaseUrl()}ra/" target="_ejbcaraweb" rel="noopener noreferer" rendered="#{adminMenuBean.authorizedToViewRaWeb}" value="#{web.text.RAWEB}" icon="pi pi-fw pi-globe"/>
+        <p:menuitem id="mainDocumentation" url="#{ejbcawebbean.getHelpBaseURI() }/index.html" target="_ejbcaDocWindow" rel="noopener noreferer" rendered="#{adminMenuBean.helpEnabled}" value="#{web.text.DOCUMENTATION}" icon="pi pi-fw pi-question-circle"/>
+        <p:menuitem id="mainLogout" url="#{ejbcawebbean.getBaseUrl()}adminweb/logout" target="_top" rendered="#{adminMenuBean.logoutAvailable}" value="#{web.text.LOGOUT}" icon="pi pi-fw pi-sign-out"/>
     </p:menubar>
         
     <h:panelGroup layout="block" styleClass="main-wrapper">

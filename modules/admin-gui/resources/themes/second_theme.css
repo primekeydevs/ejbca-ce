@@ -103,7 +103,15 @@ p.help, .helpNormal {
 }
 
 /*--------------------------------------------------------------------------*/
-/* NAVIGATION */
+/* NAVIGATION - Horizontal top */
+
+/* Wider submenu dropdown boxes */
+.ui-menu .ui-menu-parent .ui-menu-child {
+	width: 15em;
+}
+
+/*--------------------------------------------------------------------------*/
+/* NAVIGATION - Vertical left - OLD */
 
 body#menu {
 	margin: 0em;
