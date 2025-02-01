@@ -213,7 +213,7 @@
 					<h:panelGroup
 						rendered="#{editCAsMBean.editCANotUninitializedNotExternal and not editCAsMBean.renderCvcAvailable}">
 						<h:outputLabel for="getAlternativeSigningAlgorithm"
-							value="#{web.text.ALTERNATIVESIGNINGALGORITHM}"
+							value="#{web.text.SIGNINGALGORITHM_ALTERNATIVE}"
 							style="font-weight: bold;" />
 					</h:panelGroup>
 					<h:panelGroup
@@ -225,7 +225,7 @@
 
 					<h:panelGroup
 						rendered="#{not editCAsMBean.editCANotUninitializedNotExternal and not editCAsMBean.caExternal and not editCAsMBean.renderCvcAvailable}">
-						<h:outputLabel value="#{web.text.ALTERNATIVESIGNINGALGORITHM}"
+						<h:outputLabel value="#{web.text.SIGNINGALGORITHM_ALTERNATIVE}"
 							style="font-weight: bold;" />
 					</h:panelGroup>
 					<h:panelGroup
@@ -237,7 +237,7 @@
 							<f:ajax event="change" render="editcapage" />
 						</h:selectOneMenu>
 						<br />
-						<h:outputLabel styleClass="smallHelp"
+						<h:outputLabel styleClass="warning"
 							value="#{web.text.SIGNINGALGORITHM_ALTERNATIVE_FILTERED}" />
 					</h:panelGroup>
 
